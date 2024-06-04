@@ -1,0 +1,9 @@
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\bin\Debug\Negocio.dll
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\bin\Debug\Negocio.pdb
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\bin\Debug\Dominio.dll
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\bin\Debug\Dominio.pdb
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\obj\Debug\Negocio.dll
+C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Negocio\obj\Debug\Negocio.pdb

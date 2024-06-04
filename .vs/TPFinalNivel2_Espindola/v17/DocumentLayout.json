@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1376C591-BEE6-4A55-A5F8-3C14CAD88D0C}|Dominio\\Dominio.csproj|c:\\users\\pepe\\desktop\\tpfinalnivel2_espindola\\dominio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1376C591-BEE6-4A55-A5F8-3C14CAD88D0C}|Dominio\\Dominio.csproj|solutionrelative:dominio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\pepe\\desktop\\tpfinalnivel2_espindola\\presentacion\\fmraltaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\fmraltaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\pepe\\desktop\\tpfinalnivel2_espindola\\presentacion\\fmraltaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\fmraltaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\pepe\\desktop\\tpfinalnivel2_espindola\\presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Dominio\\Class1.cs",
-              "RelativeDocumentMoniker": "Dominio\\Class1.cs",
-              "ToolTip": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Dominio\\Class1.cs",
-              "RelativeToolTip": "Dominio\\Class1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "fmrAltaArticulo.cs",
+              "DocumentMoniker": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\fmrAltaArticulo.cs",
+              "RelativeDocumentMoniker": "Presentacion\\fmrAltaArticulo.cs",
+              "ToolTip": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\fmrAltaArticulo.cs",
+              "RelativeToolTip": "Presentacion\\fmrAltaArticulo.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAA1wCkAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T15:58:46.179Z",
+              "WhenOpened": "2024-06-04T15:33:29.464Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "fmrAltaArticulo.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\fmrAltaArticulo.cs",
+              "RelativeDocumentMoniker": "Presentacion\\fmrAltaArticulo.cs",
+              "ToolTip": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\fmrAltaArticulo.cs [Design]",
+              "RelativeToolTip": "Presentacion\\fmrAltaArticulo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T15:17:04.423Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\Form1.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Form1.cs",
+              "ToolTip": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\Form1.cs",
+              "RelativeToolTip": "Presentacion\\Form1.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAcwDsAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T15:47:14.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\Form1.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Form1.cs",
+              "ToolTip": "C:\\Users\\pepe\\Desktop\\TPFinalNivel2_Espindola\\Presentacion\\Form1.cs [Design]",
+              "RelativeToolTip": "Presentacion\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T15:46:06.98Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
