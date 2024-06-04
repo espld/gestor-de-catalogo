@@ -19,13 +19,14 @@ namespace Negocio
 
             try
             {
-                accesoDatos.SetearConsulta("select a.Codigo,a.Nombre,a.Precio,a.ImagenUrl,c.Descripcion Categoria,m.Descripcion Marca,a.Descripcion from ARTICULOS a,CATEGORIAS c,MARCAS m where a.IdCategoria = c.Id and a.IdMarca = m.Id");
+                accesoDatos.SetearConsulta("select a.Codigo,a.Nombre,a.Precio,a.ImagenUrl,c.Descripcion Categoria,m.Descripcion Marca,a.Descripcion,a.IdMarca,a.IdCategoria,a.Id from ARTICULOS a,CATEGORIAS c,MARCAS m where a.IdCategoria = c.Id and a.IdMarca = m.Id");
                 accesoDatos.EjecutarConsulta();
 
                 while(accesoDatos.Lector.Read())
                 {
                     Articulo articuloAux = new Articulo();
 
+                    articuloAux.Id = (int)accesoDatos.Lector["Id"];
                     articuloAux.CodigoArticulo = (string)accesoDatos.Lector["Codigo"];
                     articuloAux.Nombre = (string)accesoDatos.Lector["Nombre"];
                     articuloAux.Precio = (float)(decimal)accesoDatos.Lector["Precio"];
@@ -36,8 +37,10 @@ namespace Negocio
                     }
 
                     articuloAux.Categoria = new Categoria();
+                    articuloAux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
                     articuloAux.Categoria.Descripcion = (string)accesoDatos.Lector["Categoria"];
                     articuloAux.Marca = new Marca();
+                    articuloAux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
                     articuloAux.Marca.Descripcion = (string)accesoDatos.Lector["Marca"];
 
                     articuloAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
@@ -82,5 +85,36 @@ namespace Negocio
                 accesoDatos.CerrarConexion();
             }
         }
+
+        public void Modificar(Articulo articuloAModificar)
+        {
+
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.SetearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, precio = @precio where Id = @id");
+                accesoDatos.SetearParametros("@codigo", articuloAModificar.CodigoArticulo);
+                accesoDatos.SetearParametros("@nombre", articuloAModificar.Nombre);
+                accesoDatos.SetearParametros("@desc", articuloAModificar.Descripcion);
+                accesoDatos.SetearParametros("@idMarca", articuloAModificar.Marca.Id);
+                accesoDatos.SetearParametros("@idCategoria", articuloAModificar.Categoria.Id);
+                accesoDatos.SetearParametros("@img", articuloAModificar.ImagenUrl);
+                accesoDatos.SetearParametros("@precio", articuloAModificar.Precio);
+                accesoDatos.SetearParametros("@id", articuloAModificar.Id);
+
+                accesoDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.CerrarConexion();
+            }
+        }
+
     }
 }

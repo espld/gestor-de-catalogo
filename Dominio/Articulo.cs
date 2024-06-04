@@ -16,6 +16,13 @@ namespace Dominio
         private Categoria categoria;
         private string imagenUrl;
         private float precio;
+        private int id;
+
+        public int Id
+        {
+            get { return this.id; }
+            set {  this.id = value; }
+        }
 
         [DisplayName("Código")]
         public string CodigoArticulo

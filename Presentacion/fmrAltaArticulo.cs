@@ -14,9 +14,17 @@ namespace Presentacion
 {
     public partial class fmrAltaArticulo : Form
     {
+        private Articulo articulo = null;
+
         public fmrAltaArticulo()
         {
             InitializeComponent();
+        }
+        public fmrAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar artículo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -26,21 +34,34 @@ namespace Presentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo nuevoArticulo = new Articulo();
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
-                nuevoArticulo.CodigoArticulo = txtCodigo.Text;
-                nuevoArticulo.Nombre = txtNombre.Text;
-                nuevoArticulo.Precio = float.Parse(txtPrecio.Text);
-                nuevoArticulo.Descripcion = txtDescripcion.Text;
-                nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
-                nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                if(articulo == null)
+                {
+                    articulo = new Articulo();
+                }
 
-                articuloNegocio.Agregar(nuevoArticulo);
-                MessageBox.Show("Agregado exitosamente.");
+                articulo.CodigoArticulo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Precio = float.Parse(txtPrecio.Text);
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.ImagenUrl = txtImagen.Text;
+
+                if(articulo.Id != 0)
+                {
+                    articuloNegocio.Modificar(articulo);
+                    MessageBox.Show("Modificado exitosamente.");
+                }
+                else
+                {
+                    articuloNegocio.Agregar(articulo);
+                    MessageBox.Show("Agregado exitosamente.");                    
+                }
+
                 this.Close();
-
             }
             catch (Exception ex)
             {
@@ -57,14 +78,48 @@ namespace Presentacion
             try
             {
                 cboMarca.DataSource = marcaNegocio.Listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoriaNegocio.Listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    txtCodigo.Text = articulo.CodigoArticulo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtPrecio.Text = articulo.Precio.ToString();
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtImagen.Text = articulo.ImagenUrl;
+                    CargarImagen(articulo.ImagenUrl);
+
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
+                }
+
+
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);;
             }
-
         }
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+            this.CargarImagen(txtImagen.Text);
+        }
+        private void CargarImagen(string imagen)
+        {
+            try
+            {
+                pbxImagenAlta.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbxImagenAlta.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg");
+            }
+        }
+
     }
 }
