@@ -11,7 +11,6 @@ namespace Negocio
 {
     public class ArticuloNegocio
     {
-       
         public List<Articulo> Listar()
         {
             AccesoDatos accesoDatos = new AccesoDatos();
@@ -22,7 +21,7 @@ namespace Negocio
                 accesoDatos.SetearConsulta("select a.Codigo,a.Nombre,a.Precio,a.ImagenUrl,c.Descripcion Categoria,m.Descripcion Marca,a.Descripcion,a.IdMarca,a.IdCategoria,a.Id from ARTICULOS a,CATEGORIAS c,MARCAS m where a.IdCategoria = c.Id and a.IdMarca = m.Id");
                 accesoDatos.EjecutarConsulta();
 
-                while(accesoDatos.Lector.Read())
+                while (accesoDatos.Lector.Read())
                 {
                     Articulo articuloAux = new Articulo();
 
@@ -76,7 +75,7 @@ namespace Negocio
                 accesoDatos.SetearParametros("@Descripcion", articuloNuevo.Descripcion);
                 accesoDatos.EjecutarAccion();
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -116,5 +115,163 @@ namespace Negocio
             }
         }
 
+        public void Eliminar(int id)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.SetearConsulta("delete from ARTICULOS where id = @id");
+                accesoDatos.SetearParametros("id", id);
+
+                accesoDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.CerrarConexion();
+            }
+        }
+
+        public List<Articulo> Filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> articulos = new List<Articulo>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "select a.Codigo,a.Nombre,a.Precio,a.ImagenUrl,c.Descripcion Categoria,m.Descripcion Marca,a.Descripcion,a.IdMarca,a.IdCategoria,a.Id from ARTICULOS a,CATEGORIAS c,MARCAS m where a.IdCategoria = c.Id and a.IdMarca = m.Id and ";
+                switch (campo)
+                {
+                    case "Precio":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += $"a.Precio > {filtro}";
+                                break;
+                            case "Menor a":
+                                consulta += $"a.Precio < {filtro}";
+                                break;
+                            default:
+                                consulta += $"a.Precio = {filtro}";
+                                break;
+                        }
+                        break;
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Empieza con":
+                                consulta += $"a.Nombre like '{filtro}%'";
+                                break;
+                            case "Termina con":
+                                consulta += $"a.Nombre like '%{filtro}'";
+                                break;
+                            default:
+                                consulta += $"a.Nombre like '%{filtro}%'";
+                                break;
+                        }
+                        break;
+                    case "Código":
+                        switch (criterio)
+                        {
+                            case "Empieza con":
+                                consulta += $"a.Codigo like '{filtro}%'";
+                                break;
+                            case "Termina con":
+                                consulta += $"a.Codigo like '%{filtro}'";
+                                break;
+                            default:
+                                consulta += $"a.Codigo like '%{filtro}%'";
+                                break;
+                        }
+                        break;
+                    case "Marca":
+                        switch (criterio)
+                        {
+                            case "Empieza con":
+                                consulta += $"m.Descripcion like '{filtro}%'";
+                                break;
+                            case "Termina con":
+                                consulta += $"m.Descripcion like '%{filtro}'";
+                                break;
+                            default:
+                                consulta += $"m.Descripcion like '%{filtro}%'";
+                                break;
+                        }
+                        break;
+                    //case "Categoría":
+                    //    switch (criterio)
+                    //    {
+                    //        case "Empieza con":
+                    //            consulta += $"c.Descripcion like '{filtro}%'";
+                    //            break;
+                    //        case "Termina con":
+                    //            break;
+                    //        default:
+
+                    //            break;
+                    //    }
+                        break;
+                    default:
+                        switch (criterio)
+                        {
+                            case "Empieza con":
+                                consulta += $"c.Descripcion like '{filtro}%'";
+                                break;
+                            case "Termina con":
+                                consulta += $"c.Descripcion like '%{filtro}'";
+                                break;
+                            default:
+                                consulta += $"c.Descripcion like '%{filtro}%'";
+                                break;
+                        }
+                        break;
+                }
+                accesoDatos.SetearConsulta(consulta);
+                accesoDatos.EjecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulo articuloAux = new Articulo();
+
+                    articuloAux.Id = (int)accesoDatos.Lector["Id"];
+                    articuloAux.CodigoArticulo = (string)accesoDatos.Lector["Codigo"];
+                    articuloAux.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    articuloAux.Precio = (float)(decimal)accesoDatos.Lector["Precio"];
+
+                    if (!(accesoDatos.Lector["ImagenUrl"] is DBNull))
+                    {
+                        articuloAux.ImagenUrl = (string)accesoDatos.Lector["ImagenUrl"];
+                    }
+
+                    articuloAux.Categoria = new Categoria();
+                    articuloAux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
+                    articuloAux.Categoria.Descripcion = (string)accesoDatos.Lector["Categoria"];
+                    articuloAux.Marca = new Marca();
+                    articuloAux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
+                    articuloAux.Marca.Descripcion = (string)accesoDatos.Lector["Marca"];
+
+                    articuloAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+
+                    articulos.Add(articuloAux);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.CerrarConexion();
+            }
+
+            return articulos;
+        }
     }
 }

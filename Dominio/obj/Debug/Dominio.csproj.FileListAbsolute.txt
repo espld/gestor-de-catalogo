@@ -4,3 +4,9 @@ C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.csproj.A
 C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.dll
 C:\Users\pepe\Desktop\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.pdb
+C:\Users\marcelotoscano\Desktop\TFMP\TPFinalNivel2_Espindola\Dominio\bin\Debug\Dominio.dll
+C:\Users\marcelotoscano\Desktop\TFMP\TPFinalNivel2_Espindola\Dominio\bin\Debug\Dominio.pdb
+C:\Users\marcelotoscano\Desktop\TFMP\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\marcelotoscano\Desktop\TFMP\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\marcelotoscano\Desktop\TFMP\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.dll
+C:\Users\marcelotoscano\Desktop\TFMP\TPFinalNivel2_Espindola\Dominio\obj\Debug\Dominio.pdb

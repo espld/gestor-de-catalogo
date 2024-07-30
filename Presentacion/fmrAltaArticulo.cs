@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Presentacion
 {
     public partial class fmrAltaArticulo : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
 
         public fmrAltaArticulo()
         {
@@ -61,6 +64,11 @@ namespace Presentacion
                     MessageBox.Show("Agregado exitosamente.");                    
                 }
 
+                if(archivo != null && !(this.txtImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                }
+
                 this.Close();
             }
             catch (Exception ex)
@@ -91,35 +99,33 @@ namespace Presentacion
                     txtPrecio.Text = articulo.Precio.ToString();
                     txtDescripcion.Text = articulo.Descripcion;
                     txtImagen.Text = articulo.ImagenUrl;
-                    CargarImagen(articulo.ImagenUrl);
+                    Helper.CargarImagen(articulo.ImagenUrl,pbxImagenAlta);
 
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                 }
-
-
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);;
+                MessageBox.Show(ex.Message);
             }
         }
         private void txtImagen_Leave(object sender, EventArgs e)
         {
-            this.CargarImagen(txtImagen.Text);
+            Helper.CargarImagen(txtImagen.Text,pbxImagenAlta);
         }
-        private void CargarImagen(string imagen)
+        
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            try
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+
+            if (archivo.ShowDialog() == DialogResult.OK)
             {
-                pbxImagenAlta.Load(imagen);
-            }
-            catch (Exception ex)
-            {
-                pbxImagenAlta.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg");
+                this.txtImagen.Text = ConfigurationManager.AppSettings["images-folder"].ToString() + archivo.SafeFileName;
+
+                Helper.CargarImagen(archivo.FileName,pbxImagenAlta);
             }
         }
-
     }
 }

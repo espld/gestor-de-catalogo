@@ -61,6 +61,6 @@ namespace Dominio
         {
             get { return this.categoria;}
             set { this.categoria = value;}
-        }
+        }   
 	}
 }
