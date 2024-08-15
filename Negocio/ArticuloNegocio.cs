@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio;
 using System.ComponentModel.Design;
 
 namespace Negocio
@@ -202,19 +201,6 @@ namespace Negocio
                                 consulta += $"m.Descripcion like '%{filtro}%'";
                                 break;
                         }
-                        break;
-                    //case "Categoría":
-                    //    switch (criterio)
-                    //    {
-                    //        case "Empieza con":
-                    //            consulta += $"c.Descripcion like '{filtro}%'";
-                    //            break;
-                    //        case "Termina con":
-                    //            break;
-                    //        default:
-
-                    //            break;
-                    //    }
                         break;
                     default:
                         switch (criterio)

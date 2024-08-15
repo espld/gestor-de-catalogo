@@ -31,19 +31,6 @@ namespace Negocio
             }
             return true;
         }
-        public static bool ValidarCamposVacios(ComboBox comboBox,string nombreDelCampo)
-        {
-            if (comboBox.SelectedIndex < 0)
-            {
-                MessageBox.Show($"Debe seleccionar {nombreDelCampo}.");
-                return true;
-            }
-            //if (comboBox.SelectedIndex < 0)
-            //{
-            //    //MessageBox.Show("Debe seleccionar un criterio de búsqueda");
-            //    return true;
-            //}
-            return false;
-        }
+        
     } 
 }

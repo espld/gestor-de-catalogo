@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,36 +21,10 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-
-        private void Cargar()
-        {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-
-            try
-            {
-                this.listaArticulos = articuloNegocio.Listar();
-                this.dgvArticulos.DataSource = listaArticulos;
-                this.OcultarColumnas();
-                Helper.CargarImagen(listaArticulos[0].ImagenUrl, pbxImagenArticulo);
-                this.dgvArticulos.ClearSelection();
-                this.dgvArticulos.CurrentCell = null;
-                this.txtFiltro.Clear();
-                if (this.cboCampo.Items.Count < 1)
-                {
-                    this.SetearComboBox();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error inesperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void fmrPrincipal_Load(object sender, EventArgs e)
         {
             this.Cargar();
         }
-
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvArticulos.CurrentRow != null)
@@ -58,15 +33,13 @@ namespace Presentacion
                 Helper.CargarImagen(articuloSeleccionado.ImagenUrl, pbxImagenArticulo);
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             fmrAltaArticulo alta = new fmrAltaArticulo();
 
             alta.ShowDialog();
-            Cargar();
+            this.Cargar();
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Articulo articuloSeleccionado;
@@ -83,7 +56,6 @@ namespace Presentacion
                 MessageBox.Show("Debe seleccionar un ítem para modificar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Articulo articuloSeleccionado;
@@ -99,7 +71,7 @@ namespace Presentacion
                 if (resultado == DialogResult.Yes)
                 {
                     articuloNegocio.Eliminar(articuloSeleccionado.Id);
-                    Cargar();
+                    this.Cargar();
                 }
             }
             catch (Exception)
@@ -107,49 +79,30 @@ namespace Presentacion
                 MessageBox.Show("Debe seleccionar un ítem para eliminar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        private bool ValidarTextoDeBusqueda(string cadena)
-        {
-            if (string.IsNullOrEmpty(cadena))
-            {
-                MessageBox.Show("Debe ingresar un filtro para buscar.");
-                return true;
-            }
-            return false;
-        }
-        private bool ValidarCampoNumerico(string cadena)
-        {
-            if (cboCampo.SelectedItem.ToString() == "Precio")
-            {
-                if (!Helper.SoloNumeros(cadena))
-                {
-                    MessageBox.Show("Debe ingresar solo números.");
-                    return true;
-                }
-            }
-            return false;
-        }
-        
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
 
             try
             {
-                if (Helper.ValidarCamposVacios(this.cboCampo,"Campo"))
+                if (this.ValidarComboBoxVacio(this.cboCampo))
                 {
+                    MessageBox.Show("Debe seleccionar un campo de búsqueda","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
-                if(Helper.ValidarCamposVacios(this.cboCriterio,"Criterio"))
+                if (this.ValidarComboBoxVacio(this.cboCriterio))
                 {
+                    MessageBox.Show("Debe seleccionar un criterio de búsqueda","Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 if (ValidarTextoDeBusqueda(txtFiltroAvanzado.Text))
                 {
+                    MessageBox.Show("Debe ingresar un filtro para buscar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 if (ValidarCampoNumerico(txtFiltroAvanzado.Text))
                 {
+                    MessageBox.Show("Debe ingresar solo números.","Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -158,16 +111,15 @@ namespace Presentacion
                 string filtro = this.txtFiltroAvanzado.Text;
                 dgvArticulos.DataSource = articuloNegocio.Filtrar(campo, criterio, filtro);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al buscar");
             }
         }
-
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
-            string filtro = txtFiltro.Text;
+            string filtro = this.txtFiltro.Text;
 
             if (filtro.Length >= 3)
             {
@@ -178,23 +130,25 @@ namespace Presentacion
                 listaFiltrada = listaArticulos;
             }
 
-            dgvArticulos.DataSource = null;
+            this.dgvArticulos.DataSource = null;
 
-            dgvArticulos.DataSource = listaFiltrada;
+            this.dgvArticulos.DataSource = listaFiltrada;
 
             if (listaFiltrada.Count < 1)
             {
-                btnModificar.Enabled = false;
-                btnEliminar.Enabled = false;
+                this.btnModificar.Enabled = false;
+                this.btnEliminar.Enabled = false;
+                this.btnDetalle.Enabled = false;
             }
             else
             {
                 btnModificar.Enabled = true;
                 btnEliminar.Enabled = true;
+                this.btnDetalle.Enabled = true;
             }
 
             this.OcultarColumnas();
-            dgvArticulos.ClearSelection();
+            this.dgvArticulos.ClearSelection();
         }
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -223,20 +177,6 @@ namespace Presentacion
             this.txtFiltroAvanzado.Text = string.Empty;
             this.Cargar();
         }
-        private void OcultarColumnas()
-        {
-            dgvArticulos.Columns["ImagenUrl"].Visible = false;
-            dgvArticulos.Columns["Id"].Visible = false;
-        }
-        private void SetearComboBox()
-        {
-            this.cboCampo.Items.Add("Nombre");
-            this.cboCampo.Items.Add("Precio");
-            this.cboCampo.Items.Add("Código");
-            this.cboCampo.Items.Add("Marca");
-            this.cboCampo.Items.Add("Categoría");
-        }
-
         private void btnDetalle_Click(object sender, EventArgs e)
         {
             Articulo articuloSeleccionado;
@@ -252,7 +192,70 @@ namespace Presentacion
             {
                 MessageBox.Show("Debe seleccionar un ítem para ver el detalle.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        private bool ValidarComboBoxVacio(ComboBox comboBox)
+        {
+            if (comboBox.SelectedIndex < 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool ValidarTextoDeBusqueda(string cadena)
+        {
+            if (string.IsNullOrEmpty(cadena))
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool ValidarCampoNumerico(string cadena)
+        {
+            if (cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (!Helper.SoloNumeros(cadena))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private void Cargar()
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
 
+            try
+            {
+                this.listaArticulos = articuloNegocio.Listar();
+                this.dgvArticulos.DataSource = listaArticulos;
+                this.dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
+                this.OcultarColumnas();
+                Helper.CargarImagen(listaArticulos[0].ImagenUrl, pbxImagenArticulo);
+                this.dgvArticulos.ClearSelection();
+                this.dgvArticulos.CurrentCell = null;
+                this.txtFiltro.Clear();
+                if (this.cboCampo.Items.Count < 1)
+                {
+                    this.SetearComboBox();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error inesperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void OcultarColumnas()
+        {
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
+        }
+        private void SetearComboBox()
+        {
+            this.cboCampo.Items.Add("Nombre");
+            this.cboCampo.Items.Add("Precio");
+            this.cboCampo.Items.Add("Código");
+            this.cboCampo.Items.Add("Marca");
+            this.cboCampo.Items.Add("Categoría");
         }
     }
 }

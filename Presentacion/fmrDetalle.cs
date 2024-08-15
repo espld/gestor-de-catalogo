@@ -37,9 +37,9 @@ namespace Presentacion
                     this.txtDescripcion.Text = articulo.Descripcion;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al cargar el detalle.");
             }
         }
 

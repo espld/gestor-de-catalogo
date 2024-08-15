@@ -34,7 +34,6 @@ namespace Presentacion
         {
             this.Close();
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -53,15 +52,20 @@ namespace Presentacion
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.ImagenUrl = txtImagen.Text;
 
+                if(ValidarRequeridos())
+                {
+                    MessageBox.Show("No ingresó alguno de los campos requeridos: Nombre, Código o Precio","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    return;
+                }
                 if(articulo.Id != 0)
                 {
                     articuloNegocio.Modificar(articulo);
-                    MessageBox.Show("Modificado exitosamente.");
+                    MessageBox.Show("Modificado exitosamente.", "Información", MessageBoxButtons.OK);
                 }
                 else
                 {
                     articuloNegocio.Agregar(articulo);
-                    MessageBox.Show("Agregado exitosamente.");                    
+                    MessageBox.Show("Agregado exitosamente.", "Información", MessageBoxButtons.OK);                    
                 }
 
                 if(archivo != null && !(this.txtImagen.Text.ToUpper().Contains("HTTP")))
@@ -71,10 +75,10 @@ namespace Presentacion
 
                 this.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message);;
+                MessageBox.Show("Ingresar sólo números en el campo Precio","Información",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -105,9 +109,9 @@ namespace Presentacion
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al cargar el formulario Alta.");
             }
         }
         private void txtImagen_Leave(object sender, EventArgs e)
@@ -126,6 +130,14 @@ namespace Presentacion
 
                 Helper.CargarImagen(archivo.FileName,pbxImagenAlta);
             }
+        }
+        private bool ValidarRequeridos()
+        {
+            if (string.IsNullOrEmpty(this.txtCodigo.Text) || string.IsNullOrEmpty(this.txtNombre.Text) || string.IsNullOrEmpty(this.txtPrecio.Text))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

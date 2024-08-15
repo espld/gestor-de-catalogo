@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\marcelotoscano\\desktop\\tfmp\\tpfinalnivel2_espindola\\presentacion\\fmrprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\fmrprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{CC6A85F1-E1E4-483F-A4CB-809B0FDF54AA}|Negocio\\Negocio.csproj|c:\\users\\marcelotoscano\\desktop\\tfmp\\tpfinalnivel2_espindola\\negocio\\articulonegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC6A85F1-E1E4-483F-A4CB-809B0FDF54AA}|Negocio\\Negocio.csproj|solutionrelative:negocio\\articulonegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\marcelotoscano\\desktop\\tfmp\\tpfinalnivel2_espindola\\presentacion\\fmraltaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\fmraltaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\marcelotoscano\\desktop\\tfmp\\tpfinalnivel2_espindola\\presentacion\\fmrprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\fmrprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|c:\\users\\marcelotoscano\\desktop\\tfmp\\tpfinalnivel2_espindola\\presentacion\\fmrprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{55C66DE3-116C-47DF-B309-60E761E4732B}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\fmrprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,25 +27,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ArticuloNegocio.cs",
+              "DocumentMoniker": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Negocio\\ArticuloNegocio.cs",
+              "RelativeDocumentMoniker": "Negocio\\ArticuloNegocio.cs",
+              "ToolTip": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Negocio\\ArticuloNegocio.cs",
+              "RelativeToolTip": "Negocio\\ArticuloNegocio.cs",
+              "ViewState": "AQIAAMsAAAAAAAAAAAAcwNYAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T19:52:34.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "fmrPrincipal.cs",
+              "DocumentMoniker": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Presentacion\\fmrPrincipal.cs",
+              "RelativeDocumentMoniker": "Presentacion\\fmrPrincipal.cs",
+              "ToolTip": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Presentacion\\fmrPrincipal.cs",
+              "RelativeToolTip": "Presentacion\\fmrPrincipal.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAG8AAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T19:51:56.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "fmrPrincipal.cs [Design]",
               "DocumentMoniker": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Presentacion\\fmrPrincipal.cs",
               "RelativeDocumentMoniker": "Presentacion\\fmrPrincipal.cs",
               "ToolTip": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Presentacion\\fmrPrincipal.cs [Design]",
               "RelativeToolTip": "Presentacion\\fmrPrincipal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T22:02:01.733Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "fmrAltaArticulo.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Presentacion\\fmrAltaArticulo.cs",
-              "RelativeDocumentMoniker": "Presentacion\\fmrAltaArticulo.cs",
-              "ToolTip": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\Presentacion\\fmrAltaArticulo.cs [Design]",
-              "RelativeToolTip": "Presentacion\\fmrAltaArticulo.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T21:57:24.704Z",
+              "WhenOpened": "2024-08-03T19:51:52.328Z",
               "EditorCaption": " [Design]"
             }
           ]
