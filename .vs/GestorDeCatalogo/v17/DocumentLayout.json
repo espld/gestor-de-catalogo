@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\TPFinalNivel2_Espindola\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\GestordeCatalogo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1376C591-BEE6-4A55-A5F8-3C14CAD88D0C}|Dominio\\Dominio.csproj|c:\\users\\marcelotoscano\\desktop\\tfmp\\gestordecatalogo\\dominio\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1376C591-BEE6-4A55-A5F8-3C14CAD88D0C}|Dominio\\Dominio.csproj|solutionrelative:dominio\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Marca.cs",
+              "DocumentMoniker": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\GestordeCatalogo\\Dominio\\Marca.cs",
+              "RelativeDocumentMoniker": "Dominio\\Marca.cs",
+              "ToolTip": "C:\\Users\\marcelotoscano\\Desktop\\TFMP\\GestordeCatalogo\\Dominio\\Marca.cs",
+              "RelativeToolTip": "Dominio\\Marca.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T20:43:22.055Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
